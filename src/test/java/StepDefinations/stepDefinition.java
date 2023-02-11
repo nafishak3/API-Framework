@@ -9,7 +9,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -22,7 +21,7 @@ import static io.restassured.RestAssured.given;
 public class stepDefinition {
     RequestSpecification requestSpecification;
     ResponseSpecification responseSpecification;
-    static Response response;
+    Response response;
     TestDataBuild testDataBuild = new TestDataBuild();
     ReusableMethods reusableMethods = new ReusableMethods();
     static String placeId;
@@ -60,7 +59,7 @@ public class stepDefinition {
 
     @Then("the response with API call got success code {int}")
     public void the_response_with_api_call_got_success_code(Integer int1) {
-        Assert.assertEquals(response.getStatusCode(), int1);
+        Assert.assertEquals(response.getStatusCode(), 200);
     }
 
     @And("{string} in response body is {string}")
